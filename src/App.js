@@ -10,7 +10,8 @@ class App extends Component {
     super()
 
     this.state = {
-      inventory: []
+      inventory: [],
+      currentSelection: 0
     }
     this.passPostToApp = this.passPostToApp.bind(this);
     
@@ -39,7 +40,8 @@ class App extends Component {
               passPostToApp={this.passPostToApp}/>
 
         <Form 
-            passPostToApp={this.passPostToApp}/>
+            passPostToApp={this.passPostToApp}
+              currentSelection={this.state.currentSelection}/>
             
         <Header />
       </div>
