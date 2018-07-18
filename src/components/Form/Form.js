@@ -4,8 +4,8 @@ import defaultImg from '../../assets/default.jpg';
 import axios from 'axios';
 
 export default class Form extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
 
         this.state = {
             name: '',
@@ -19,9 +19,10 @@ export default class Form extends Component {
         let price = this.state.price
         let imgurl = this.state.imgurl
 
-         axios.post('/api/product', {imgurl: imgurl, name: name, price: price})
+         axios.post('/api/product', {name: name, price: price, image_url: imgurl})
          .then( (res) => {
-             console.log(res.data)
+            this.props.passPostToApp(res.data)
+           
          })
 
          this.setState({

@@ -12,6 +12,7 @@ class App extends Component {
     this.state = {
       inventory: []
     }
+    this.passPostToApp = this.passPostToApp.bind(this);
     
   }
 
@@ -22,11 +23,24 @@ class App extends Component {
       })
     })
   }
+
+  passPostToApp(newInventory){
+    this.setState({
+      inventory: newInventory
+    })
+  }
+
+
   render() {
     return (
       <div className="App">
-        <Dashboard inventory={this.state.inventory}/>
-        <Form />
+        <Dashboard 
+            inventory={this.state.inventory}
+              passPostToApp={this.passPostToApp}/>
+
+        <Form 
+            passPostToApp={this.passPostToApp}/>
+            
         <Header />
       </div>
     );
